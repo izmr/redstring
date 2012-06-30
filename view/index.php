@@ -7,6 +7,7 @@
     <title><?php echo he($app_name); ?></title>
   </head>
   <body>
-  <?php var_dump($app_using_friends ); ?>
+  <?php var_dump( $basic ); ?><br />
+  <?php var_dump( $app_using_friends ); ?>
   </body>
 </html>
