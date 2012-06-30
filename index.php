@@ -67,7 +67,7 @@ if ($user_id) {
   // using this app
   $app_using_friends = $facebook->api(array(
     'method' => 'fql.query',
-    'query' => 'SELECT uid, name, birthday FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
+    'query' => 'SELECT uid, name, birthday_date FROM user WHERE uid IN(SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1'
   ));
 }
 
@@ -77,15 +77,4 @@ $app_info = $facebook->api('/'. AppInfo::appID());
 $app_name = idx($app_info, 'name', '');
 
 ?>
-<!DOCTYPE html>
-<html xmlns:fb="http://ogp.me/ns/fb#" lang="ja">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
-    <title><?php echo he($app_name); ?></title>
-  </head>
-  <body>
-  <?php var_dump($app_using_friends ); ?>
-  </body>
-</html>
+<?php require_once("view/index.php") ?>
